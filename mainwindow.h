@@ -3,6 +3,14 @@
 
 #include <QMainWindow>
 
+extern QString startCity;
+extern QString endCity;
+extern QString method;
+extern QString road;
+extern QString totaltime;
+extern QString price;
+extern QString changetimes;
+
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -38,12 +46,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void CreateUDG(ALGraph &G, QString verticesData[], int arcData[][5]);
-
+    void CreateUDG(QString verticesData[], int arcData[][5]);
+    int CitySerial(QString cityname);
+    void ShortestPath_Floyd(int start_serial, int end_serial);
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    ALGraph *G;
 };
 #endif // MAINWINDOW_H

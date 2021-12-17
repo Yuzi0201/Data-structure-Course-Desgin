@@ -1,5 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "resultdialog.h"
+#include <QDebug>
+
+QString startCity;
+QString endCity;
+QString method;
+QString road;
+QString totaltime;
+QString price;
+QString changetimes;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,8 +26,13 @@ MainWindow::MainWindow(QWidget *parent)
         {2, 3, 349, 72, 112}, {1, 4, 812, 180, 283}, {2, 5, 1579, 300, 495}, {3, 6, 651, 120, 162},
         {4, 5, 2368, 420, 684}, {5, 6, 1385, 240, 386}
     };
-    ALGraph *G = new ALGraph;
-    CreateUDG(*G, verticesData, arcData);
+    G = new ALGraph;
+    CreateUDG(verticesData, arcData);
+    for (size_t i = 0; i < G->vexnum; i++)//将城市名填入下拉框中
+    {
+        ui->startBox->addItem(G->vertices[i].cityname);
+        ui->endBox->addItem(G->vertices[i].cityname);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -25,18 +40,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::CreateUDG(ALGraph &G, QString verticesData[], int arcData[][5])
+void MainWindow::CreateUDG(QString verticesData[], int arcData[][5])//初始化图
 {
-    G.vexnum = 7;
-    G.arcnum = 10;
-    for (size_t i = 0; i < G.vexnum; i++)
+    G->vexnum = 7;
+    G->arcnum = 10;
+    for (size_t i = 0; i < G->vexnum; i++)
     {
-        G.vertices[i].cityname = verticesData[i];
-        G.vertices[i].firstarc = nullptr; //初始化表头结点指针域为nullptr
+        G->vertices[i].cityname = verticesData[i];
+        G->vertices[i].firstarc = nullptr; //初始化表头结点指针域为nullptr
     }
     int v1, v2, i, j;
     ArcNode *p1, *p2;
-    for (size_t k = 0; k < G.arcnum; k++)
+    for (size_t k = 0; k < G->arcnum; k++)
     {
         v1 = arcData[k][0];
         v2 = arcData[k][1];
@@ -47,23 +62,38 @@ void MainWindow::CreateUDG(ALGraph &G, QString verticesData[], int arcData[][5])
         p1->length = arcData[k][2];
         p1->time = arcData[k][3];
         p1->time = arcData[k][4];
-        p1->nextarc = G.vertices[i].firstarc;
-        G.vertices[i].firstarc = p1; //将新节点*p1插入到vi的边表头
+        p1->nextarc = G->vertices[i].firstarc;
+        G->vertices[i].firstarc = p1; //将新节点*p1插入到vi的边表头
         p2 = new ArcNode;
         p2->adjvex = i;
         p2->length = arcData[k][2];
         p2->time = arcData[k][3];
         p2->time = arcData[k][4];
-        p2->nextarc = G.vertices[j].firstarc;
-        G.vertices[j].firstarc = p2; //将新节点*p2插入到vj的边表头
+        p2->nextarc = G->vertices[j].firstarc;
+        G->vertices[j].firstarc = p2; //将新节点*p2插入到vj的边表头
     }
 }
 
+int MainWindow::CitySerial(QString cityname)//名字转序号
+{
+    for (size_t i = 0; i < G->vexnum; i++)
+    {
+        if(G->vertices[i].cityname == cityname)
+            return i;
+    }
+    return -1;
+}
 
+void MainWindow::ShortestPath_Floyd(int start_serial, int end_serial)
+{
+
+}
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString startCity = ui->startBox->currentText();
-    QString endCity = ui->endBox->currentText();
-    QString method = ui->requireBox->currentText();
+    startCity = ui->startBox->currentText();
+    endCity = ui->endBox->currentText();
+    method = ui->requireBox->currentText();
+    ResultDialog r;
+    r.exec();
 }
