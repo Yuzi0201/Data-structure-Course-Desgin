@@ -145,30 +145,12 @@
     <string>xx</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>150</y>
-     <width>191</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>18</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>方法是：</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="roadlabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>40</x>
      <y>220</y>
-     <width>131</width>
+     <width>621</width>
      <height>51</height>
     </rect>
    </property>
@@ -202,9 +184,9 @@
   <widget class="QLabel" name="pricelabel">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>150</x>
      <y>290</y>
-     <width>131</width>
+     <width>241</width>
      <height>51</height>
     </rect>
    </property>
@@ -238,9 +220,9 @@
   <widget class="QLabel" name="timelabel">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>430</x>
      <y>290</y>
-     <width>131</width>
+     <width>241</width>
      <height>51</height>
     </rect>
    </property>
@@ -256,8 +238,8 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>390</y>
+     <x>340</x>
+     <y>380</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -274,8 +256,8 @@
   <widget class="QLabel" name="changetimeslabel">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>390</y>
+     <x>540</x>
+     <y>380</y>
      <width>131</width>
      <height>51</height>
     </rect>
@@ -287,6 +269,42 @@
    </property>
    <property name="text">
     <string>change</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>380</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>里程：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="distancelabel">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>380</y>
+     <width>271</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>distance</string>
    </property>
   </widget>
  </widget>

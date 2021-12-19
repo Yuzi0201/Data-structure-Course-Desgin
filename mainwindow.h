@@ -10,6 +10,7 @@ extern QString road;
 extern QString totaltime;
 extern QString price;
 extern QString changetimes;
+extern QString distance;
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -48,7 +49,9 @@ public:
     ~MainWindow();
     void CreateUDG(QString verticesData[], int arcData[][5]);
     int CitySerial(QString cityname);
-    void ShortestPath_Floyd(int start_serial, int end_serial);
+    ArcNode* NextVex( int v, int w);
+    int Search_weight(int v1, int v2, QString type);
+    void ShortestPath_Floyd(int start_serial, int end_serial, QString method);
 private slots:
     void on_pushButton_clicked();
 

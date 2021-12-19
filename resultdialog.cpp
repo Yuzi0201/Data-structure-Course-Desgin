@@ -10,11 +10,12 @@ ResultDialog::ResultDialog(QWidget *parent) :
     ui->setupUi(this);
     ui->startlabel->setText(startCity);
     ui->endlabel->setText(endCity);
-    ui->methodlabel->setText(method);
+    ui->methodlabel->setText(method + "方法是：");
     ui->timelabel->setText(totaltime);
     ui->roadlabel->setText(road);
     ui->pricelabel->setText(price);
     ui->changetimeslabel->setText(changetimes);
+    ui->distancelabel->setText(distance);
 }
 
 ResultDialog::~ResultDialog()
