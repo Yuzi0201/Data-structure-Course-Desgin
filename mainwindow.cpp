@@ -157,7 +157,7 @@ void MainWindow::ShortestPath_Floyd(int start_serial, int end_serial, QString me
     else//求最小中转次数
     {
         //Breadth First Search
-        static bool visited[7] = {false};
+        bool visited[7] = {false};
         visited[start_serial] = true; //第v个（也就是第0个节点已访问）
         QQueue<int> q;
         q.push_back(start_serial);
@@ -169,16 +169,11 @@ void MainWindow::ShortestPath_Floyd(int start_serial, int end_serial, QString me
                 if (!visited[w])
                 {
                     Path[start_serial][w] = u; //w前驱置为u
-                    if(w == end_serial)
-                    {
-                        goto label;
-                    }
                     visited[w] = true;
                     q.push_back(w);
                 }
         }
     }
-label:
     QStack<int> roadstack;//创建栈，把顺序调换
     int timeint = 0;
     int priceint = 0;
